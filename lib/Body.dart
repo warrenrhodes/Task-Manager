@@ -70,13 +70,6 @@ class Body extends StatelessWidget {
                 Container(
                   child: Row(
                     children: [
-                      IconButton(
-                        icon: Icon(Icons.search),
-                        onPressed: () {
-                          print("tapppp");
-                          Feedback.forTap(context);
-                        },
-                      ),
                       PopupMenuButton(
                         initialValue: "Task list",
                         icon: Icon(
@@ -199,7 +192,8 @@ class Body extends StatelessWidget {
                                               barrierDismissible: false,
                                               onCancel: () {},
                                               onConfirm: () async {
-                                                controller.deleteTitle(listTitle[index]);
+                                                controller.deleteTitle(
+                                                    listTitle[index]);
                                                 Get.back();
                                               });
                                         },

@@ -1,5 +1,5 @@
-import 'dart:isolate';
 import 'package:shared_preferences/shared_preferences.dart';
+
 class ManagerThemeAndTemporellVar {
   static const THEME_STATUS = "THEMESTATUS";
 

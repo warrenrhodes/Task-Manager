@@ -1,3 +1,4 @@
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -194,8 +195,9 @@ class _TodoListWidgetState extends State<TodoListWidget>
                           duration: Duration(milliseconds: 901),
                           animationDuration: Duration(milliseconds: 200),
                           backgroundColor: Colors.black.withOpacity(0.5));
+                      // CreateNotification().deleteNotification(task.id!);
+                      AndroidAlarmManager.cancel(task.id!);
                     } else {
-                      print("$state   ooooooooooooooooooooooooo");
                       _fall();
                       reload(() {
                         state = 0;

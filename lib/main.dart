@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import "package:hive/hive.dart";
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,7 @@ import 'manageTask/notification_service.dart';
 import 'manageTask/taskForm.dart';
 import 'model/todo_Task.dart';
 import 'provider/dartThemePorvider.dart';
+import 'theme/themeService.dart';
 import 'theme/themedadta.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -40,6 +42,7 @@ void main() async {
 //   Hive.init(document.path);
   Hive.registerAdapter<TodoTitle>(TodoTitleAdapter());
   await Hive.openBox<TodoTitle>("title");
+  await GetStorage.init();
   MyAppControllerBinding().dependencies();
   runApp(
     MultiProvider(
@@ -78,10 +81,13 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    final themeChange = Provider.of<DarkThemeProvider>(context);
+    // final themeChange = Provider.of<DarkThemeProvider>(context);
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: Styles.themeData(themeChange.darkTheme, context),
+      theme: Themes.light,
+      darkTheme: Themes.dark,
+      themeMode: ThemeService().theme,
+      // theme: Styles.themeData(themeChange.darkTheme, context),
       home: Myhomepage(),
     );
   }
