@@ -23,10 +23,6 @@ class GeneratePage extends StatelessWidget {
         return TaskList();
       case "Task Completed":
         return CompletedTask();
-      case "Share":
-        return TaskList();
-      case "Send suggestion":
-        return TaskList();
       case "Setting":
         return Setting();
       default:

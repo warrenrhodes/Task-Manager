@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_manager2/controller/Controller.dart';
 import 'package:task_manager2/theme/themeService.dart';
 
 class Setting extends StatelessWidget {
   List themes = ["Dark", "Light"];
-  RxInt _selectedPosition = 0.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +18,7 @@ class Setting extends StatelessWidget {
             height: 150,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
                   "Theme",
@@ -41,16 +42,21 @@ class Setting extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        Obx(() => Radio(
-              value: _selectedPosition.value,
-              groupValue: position,
-              activeColor: Colors.blue,
-              onChanged: (_) {
-                _selectedPosition.value = position;
-                // ignore: unnecessary_statements
-                ThemeService().switchTheme;
-              },
-            )),
+        GetBuilder<Controller>(
+            init: Controller(),
+            builder: (controller) {
+              return Radio(
+                value: controller.selectedTheme,
+                groupValue: position,
+                activeColor: Colors.blue,
+                onChanged: (_) {
+                  controller
+                      .setSelectedTheme(controller.selectedTheme == 0 ? 1 : 0);
+                  // ignore: unnecessary_statements
+                  ThemeService().switchTheme();
+                },
+              );
+            }),
         Expanded(child: Text(item)),
       ],
     );

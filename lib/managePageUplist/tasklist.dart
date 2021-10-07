@@ -3,19 +3,17 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import "package:get/get.dart";
-import 'package:provider/provider.dart';
 import 'package:task_manager2/controller/Controller.dart';
 import 'package:task_manager2/model/modelTitle.dart';
-import 'package:task_manager2/provider/dartThemePorvider.dart';
 
 class TaskList extends StatelessWidget {
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<DarkThemeProvider>(context);
     final listTitle = Get.find<Controller>().listTitle;
     return Scaffold(
+        backgroundColor: context.theme.backgroundColor,
         appBar: AppBar(
           title: Text("Title list"),
           actions: [
@@ -38,8 +36,7 @@ class TaskList extends StatelessWidget {
                   return slideIt(
                       index: index,
                       animation: animation,
-                      listTitle: listTitle,
-                      themeProvider: themeProvider); // Refer step 3
+                      listTitle: listTitle); // Refer step 3
                 },
                 physics: BouncingScrollPhysics(),
               ));
@@ -52,15 +49,12 @@ class TaskList extends StatelessWidget {
           begin: const Offset(-1, 0),
           end: Offset(0, 0),
         ).animate(animation),
-        child:
-            buildBuildListView(themeProvider, listTitle, index, themeProvider));
+        child: buildBuildListView(listTitle, index));
   }
 
   buildBuildListView(
-    DarkThemeProvider theme,
     listTitle,
     index,
-    themeProvider,
   ) {
     final title = listTitle[index];
     return Container(
@@ -68,7 +62,7 @@ class TaskList extends StatelessWidget {
       padding: EdgeInsets.only(left: 25),
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-        color: theme.darkTheme
+        color: Get.isDarkMode
             ? Colors.white.withOpacity(0.3)
             : Colors.lightBlueAccent.withOpacity(0.1),
         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -108,8 +102,7 @@ class TaskList extends StatelessWidget {
                             (_, animation) => slideIt(
                                 index: index,
                                 animation: animation,
-                                listTitle: listTitle,
-                                themeProvider: theme),
+                                listTitle: listTitle),
                             duration: const Duration(milliseconds: 400));
                         Future.delayed(Duration(milliseconds: 400),
                             () => Get.find<Controller>().deleteTitle(title));

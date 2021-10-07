@@ -5,12 +5,10 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
 import 'package:task_manager2/controller/Controller.dart';
 import 'package:task_manager2/manageTask/taskForm.dart';
 import 'package:task_manager2/model/todo_Task.dart';
-import 'package:task_manager2/provider/dartThemePorvider.dart';
 
 class TodoListWidget extends StatefulWidget {
   final List<TodoTask>? taskList;
@@ -26,7 +24,6 @@ class _TodoListWidgetState extends State<TodoListWidget>
     with TickerProviderStateMixin {
   ScrollController scrollController = ScrollController();
   GlobalKey<AnimatedListState>? listKey;
-  DarkThemeProvider? themeChangeProvider;
   RiveAnimationController? _controller;
   Artboard? _artboard;
   double init = 0;
@@ -73,74 +70,50 @@ class _TodoListWidgetState extends State<TodoListWidget>
 
   @override
   Widget build(BuildContext context) {
-    print(
-        "$state   ////////////  ${widget.taskList}  ${widget.taskList!.length}");
-    final DarkThemeProvider themeChangeProvider =
-        Provider.of<DarkThemeProvider>(context);
     return Container(
       child: ListView.builder(
         physics: BouncingScrollPhysics(),
         controller: scrollController,
         itemCount: widget.taskList!.length,
         itemBuilder: (context, index) {
-          if (index >= widget.taskList!.length) {
-            print("worning");
-          }
-          print("worn");
-          return slideIt(index: index, theme: themeChangeProvider);
+          if (index >= widget.taskList!.length) {}
+          return slideIt(index: index);
         },
       ),
     );
   }
 
-  Widget slideIt({int? index, animation, theme}) {
-    print("$state  0000000000000000");
+  Widget slideIt({int? index, animation}) {
     final task = widget.taskList![index!];
-    return OpenContainer(
-        transitionDuration: Duration(milliseconds: 500),
-        openBuilder: (context, closedContainer) {
-          return TaskForm(oldtask: widget.taskList![index]);
+    return Dismissible(
+        key: Key('item $task'),
+        direction: DismissDirection.startToEnd,
+        confirmDismiss: (DismissDirection direction) async {
+          return await Get.defaultDialog(
+              title: 'Delete Confirmation',
+              content: const Text("Are you sure you want to delete this task?"),
+              textCancel: "Cancel",
+              textConfirm: "Delete",
+              barrierDismissible: false,
+              onCancel: () {},
+              onConfirm: () {
+                Get.find<Controller>().deleteTask(task);
+                Get.back();
+              });
         },
-        openColor: Colors.black38.withOpacity(0),
-        closedElevation: 0,
-        closedColor: Colors.white.withOpacity(0),
-        closedBuilder: (context, openContainer) {
-          return InkWell(
-              onTap: widget.taskList![index].status == false
-                  ? openContainer
-                  : () => {},
-              child: Dismissible(
-                  key: Key('item $task'),
-                  direction: DismissDirection.startToEnd,
-                  confirmDismiss: (DismissDirection direction) async {
-                    return await Get.defaultDialog(
-                        title: 'Delete Confirmation',
-                        content: const Text(
-                            "Are you sure you want to delete this task?"),
-                        textCancel: "Cancel",
-                        textConfirm: "Delete",
-                        barrierDismissible: false,
-                        onCancel: () {},
-                        onConfirm: () {
-                          Get.find<Controller>().deleteTask(task);
-                          Get.back();
-                        });
-                  },
-                  background: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Row(
-                      children: [
-                        Icon(Icons.delete, color: Colors.red),
-                        Text('Move to trash',
-                            style: TextStyle(color: Colors.red)),
-                      ],
-                    ),
-                  ),
-                  child: builContainer(index, task, theme)));
-        });
+        background: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Row(
+            children: [
+              Icon(Icons.delete, color: Colors.red),
+              Text('Move to trash', style: TextStyle(color: Colors.red)),
+            ],
+          ),
+        ),
+        child: builContainer(index, task));
   }
 
-  Widget builContainer(int index, TodoTask task, theme) {
+  Widget builContainer(int index, TodoTask task) {
     state = task.status == true ? 1 : 0;
     reinit = 0;
     containerChange = task.status == true
@@ -152,7 +125,6 @@ class _TodoListWidgetState extends State<TodoListWidget>
             Icons.radio_button_off,
             color: Color(task.color!),
           );
-    print("$state  --------------  $task");
     return Container(
       margin: EdgeInsets.only(bottom: 25),
       child: Row(
@@ -161,7 +133,6 @@ class _TodoListWidgetState extends State<TodoListWidget>
             fit: BoxFit.fill,
             alignment: Alignment.topCenter,
             child: StatefulBuilder(builder: (context, StateSetter reload) {
-              print("$state  888888888888  $task");
               return GestureDetector(
                   key: Key("$index"),
                   child: Container(
@@ -190,11 +161,12 @@ class _TodoListWidgetState extends State<TodoListWidget>
                           Duration(milliseconds: 900),
                           () => Get.find<Controller>().changeStatus(
                               Get.find<Controller>().listTask.indexOf(task)));
-                      Get.snackbar("", "$task is completed",
+                      Get.snackbar("${task.task} completed", "",
                           snackPosition: SnackPosition.BOTTOM,
-                          duration: Duration(milliseconds: 901),
-                          animationDuration: Duration(milliseconds: 200),
-                          backgroundColor: Colors.black.withOpacity(0.5));
+                          snackStyle: SnackStyle.FLOATING,
+                          duration: Duration(seconds: 2),
+                          animationDuration: Duration(seconds: 2),
+                          backgroundColor: Colors.blue.withOpacity(1));
                       // CreateNotification().deleteNotification(task.id!);
                       AndroidAlarmManager.cancel(task.id!);
                     } else {
@@ -212,116 +184,158 @@ class _TodoListWidgetState extends State<TodoListWidget>
             }),
           ),
           SizedBox(
-            width: 20,
+            width: 30,
           ),
-          FittedBox(
-            fit: BoxFit.fill,
-            alignment: Alignment.topCenter,
-            child: Container(
-              padding: EdgeInsets.only(left: 13, top: 3, bottom: 5),
-              width: Get.size.width - 100,
-              decoration: BoxDecoration(
-                color: theme.darkTheme
-                    ? Colors.white.withOpacity(0.2)
-                    : Colors.lightBlueAccent.withOpacity(0.3),
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(task.task,
-                      style: task.status == true
-                          ? TextStyle(
-                              color: Colors.red,
-                              decoration: TextDecoration.lineThrough,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20)
-                          : TextStyle(
-                              color: changecolor(
-                                  Color(task.color!), Colors.red, task),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20)),
-                  task.repeat!.length != 0
-                      ? Container(
-                          child: Column(
+          OpenContainer(
+              transitionDuration: Duration(milliseconds: 500),
+              openBuilder: (context, closedContainer) {
+                return TaskForm(oldtask: widget.taskList![index]);
+              },
+              openColor: Colors.black38.withOpacity(0),
+              closedElevation: 0,
+              closedColor: Colors.white.withOpacity(0),
+              closedBuilder: (context, openContainer) {
+                return InkWell(
+                    onTap: widget.taskList![index].status == false
+                        ? openContainer
+                        : () => {},
+                    child: FittedBox(
+                      fit: BoxFit.fill,
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width - 100,
+                        padding: EdgeInsets.only(left: 13, top: 3, bottom: 5),
+                        decoration: BoxDecoration(
+                          color: Get.isDarkMode
+                              ? Colors.white.withOpacity(0.2)
+                              : Colors.lightBlueAccent.withOpacity(0.3),
+                          borderRadius: BorderRadius.all(Radius.circular(12)),
+                        ),
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               children: [
-                                Icon(
-                                  Icons.repeat,
-                                  color: Colors.green,
-                                ),
-                                (task.repeat!.containsKey("Day"))
-                                    ? task.repeat!["Day"][0] == 1
-                                        ? Text("Repeat Every Day")
-                                        : Text(
-                                            "Repeat Every ${task.repeat!["Day"][0]}  Day")
-                                    : (task.repeat!.containsKey("Week"))
-                                        ? task.repeat!["Week"][0] == 1
-                                            ? Text("Repeat Every Week")
-                                            : Text(
-                                                "Repeat Every ${task.repeat!["Week"][0]} Week")
-                                        : (task.repeat!.containsKey("Month"))
-                                            ? task.repeat!["Month"][0] == 1
-                                                ? Text("Repeat Every Month")
-                                                : Text(
-                                                    "Repeat Every ${task.repeat!["Month"][0]} Month")
-                                            : task.repeat!["Years"][0] == 1
-                                                ? Text("Repeat Every Years")
-                                                : Text(
-                                                    "Repeat Every ${task.repeat!["Years"][0]} Years")
+                                Text("Name: "),
+                                Text(task.task,
+                                    style: task.status == true
+                                        ? TextStyle(
+                                            color: Colors.red,
+                                            decoration:
+                                                TextDecoration.lineThrough,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20)
+                                        : TextStyle(
+                                            color: changecolor(
+                                                Color(task.color!),
+                                                Colors.red,
+                                                task),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20)),
                               ],
                             ),
-                            (task.repeat!.containsKey("Day"))
-                                ? Text(
-                                    "Start:  ${typeOfDay(task.repeat!["Day"][1])} , ${task.repeat!["Day"][2]} ")
-                                : (task.repeat!.containsKey("Week"))
-                                    ? Text(
-                                        "Start:  ${typeOfDay(task.repeat!["Week"][2])} , ${task.repeat!["Week"][3]} ")
-                                    : (task.repeat!.containsKey("Month"))
-                                        ? Text(
-                                            "Start :  ${typeOfDay(DateTime.now().add(Duration(days: 1)))} , ${task.repeat!["Month"][3]} ")
-                                        : Text(
-                                            "Start :  ${typeOfDay(task.repeat!["Years"][1])} , ${task.repeat!["Years"][2]} ")
+                            task.repeat!.length != 0
+                                ? Container(
+                                    child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons.repeat,
+                                            color: Colors.green,
+                                          ),
+                                          (task.repeat!.containsKey("Day"))
+                                              ? task.repeat!["Day"][0] == 1
+                                                  ? Text("Repeat Every Day")
+                                                  : Text(
+                                                      "Repeat Every ${task.repeat!["Day"][0]}  Day")
+                                              : (task.repeat!
+                                                      .containsKey("Week"))
+                                                  ? task.repeat!["Week"][0] == 1
+                                                      ? Text(
+                                                          "Repeat Every Week")
+                                                      : Text(
+                                                          "Repeat Every ${task.repeat!["Week"][0]} Week")
+                                                  : (task.repeat!
+                                                          .containsKey("Month"))
+                                                      ? task.repeat!["Month"]
+                                                                  [0] ==
+                                                              1
+                                                          ? Text(
+                                                              "Repeat Every Month")
+                                                          : Text(
+                                                              "Repeat Every ${task.repeat!["Month"][0]} Month")
+                                                      : task.repeat!["Years"]
+                                                                  [0] ==
+                                                              1
+                                                          ? Text(
+                                                              "Repeat Every Years")
+                                                          : Text(
+                                                              "Repeat Every ${task.repeat!["Years"][0]} Years")
+                                        ],
+                                      ),
+                                      (task.repeat!.containsKey("Day"))
+                                          ? Text(
+                                              "Start:  ${typeOfDay(task.repeat!["Day"][1])} , ${task.repeat!["Day"][2]} ")
+                                          : (task.repeat!.containsKey("Week"))
+                                              ? Text(
+                                                  "Start:  ${typeOfDay(task.repeat!["Week"][2])} , ${task.repeat!["Week"][3]} ")
+                                              : (task.repeat!
+                                                      .containsKey("Month"))
+                                                  ? Text(
+                                                      "Start :  ${typeOfDay(DateTime.now().add(Duration(days: 1)))} , ${task.repeat!["Month"][3]} ")
+                                                  : Text(
+                                                      "Start :  ${typeOfDay(task.repeat!["Years"][1])} , ${task.repeat!["Years"][2]} ")
+                                    ],
+                                  ))
+                                : Container(
+                                    margin: EdgeInsets.only(top: 5, bottom: 5),
+                                    child: Row(
+                                      children: [
+                                        Text("Date & Time:"),
+                                        Text(
+                                          typeOfDay(task.date!),
+                                          style: TextStyle(
+                                              color: changecolor(
+                                                  Color(task.color!),
+                                                  Colors.red,
+                                                  task),
+                                              fontStyle: FontStyle.italic,
+                                              fontSize: 15),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          task.time!,
+                                          style: TextStyle(
+                                              color: changecolor(
+                                                  Color(task.color!),
+                                                  Colors.red,
+                                                  task),
+                                              fontStyle: FontStyle.italic,
+                                              fontSize: 15),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                            if (task.taskTitle != "Default" &&
+                                task.status == false)
+                              Text(
+                                "Title :${task.taskTitle!}",
+                                style: TextStyle(
+                                    fontStyle: FontStyle.italic, fontSize: 15),
+                              ),
+                            Text("Description: ${task.description!}",
+                                style: TextStyle(
+                                    fontStyle: FontStyle.italic, fontSize: 15))
                           ],
-                        ))
-                      : Container(
-                          margin: EdgeInsets.only(top: 5, bottom: 5),
-                          child: Row(
-                            children: [
-                              Text(
-                                typeOfDay(task.date!),
-                                style: TextStyle(
-                                    color: changecolor(
-                                        Color(task.color!), Colors.red, task),
-                                    fontStyle: FontStyle.italic,
-                                    fontSize: 15),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                task.time!,
-                                style: TextStyle(
-                                    color: changecolor(
-                                        Color(task.color!), Colors.red, task),
-                                    fontStyle: FontStyle.italic,
-                                    fontSize: 15),
-                              )
-                            ],
-                          ),
                         ),
-                  if (task.taskTitle != "Default" && task.status == false)
-                    Text(
-                      task.taskTitle!,
-                      style:
-                          TextStyle(fontStyle: FontStyle.italic, fontSize: 15),
-                    ),
-                ],
-              ),
-            ),
-          ),
+                      ),
+                    ));
+              }),
         ],
       ),
     );

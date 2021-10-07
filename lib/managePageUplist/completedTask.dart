@@ -17,33 +17,28 @@ class _CompletedTaskState extends State<CompletedTask> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // _payload = widget.payload;
-    // if (_payload != null) {
-    //   controller = Get.put(Controller());
-    // }
     controller = Get.find<Controller>();
   }
 
   @override
   Widget build(BuildContext context) {
     // changeStatusOfPayload();
-    final taskcompleted =
-        controller.listTask.where((element) => element.status == true).toList();
+
     return Scaffold(
+        backgroundColor: context.theme.backgroundColor,
         appBar: AppBar(
           title: Text("Completed task"),
         ),
-        body: TodoListWidget(
-          taskList: taskcompleted,
-          page: "",
-        ));
+        body: GetBuilder<Controller>(builder: (controller) {
+          final taskcompleted = controller.listTask
+              .where((element) => element.status == true)
+              .toList();
+          return Container(
+              margin: EdgeInsets.only(top: 10),
+              child: TodoListWidget(
+                taskList: taskcompleted,
+                page: "",
+              ));
+        }));
   }
 }
-// Future<void> changeStatusOfPayload() async {
-//   print("$_payload 44444444444444444444444");
-//   if (_payload != null) {
-//     print("payload hstatus have be change ggggggggggggggggggggggggggg");
-//     await controller.changeStatus(controller.listTask
-//         .indexWhere((element) => element.task == _payload));
-//   }
-// }

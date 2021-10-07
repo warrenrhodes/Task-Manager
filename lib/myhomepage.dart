@@ -1,26 +1,25 @@
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:get/get.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:task_manager2/manageTask/taskForm.dart';
 import 'package:task_manager2/popover.dart';
+
 import 'Body.dart';
 import 'controller/Controller.dart';
 
 class Myhomepage extends StatelessWidget {
-
-  Myhomepage({Key? key, this.payload})
-      : super(key: key);
+  Myhomepage({Key? key, this.payload}) : super(key: key);
   final String? payload;
   Controller controller = Get.put(Controller());
 
   @override
   Widget build(BuildContext context) {
-    final Size size = Get.size;
     return SafeArea(
       child: Scaffold(
-        body: Body(size: size),
+        backgroundColor: context.theme.backgroundColor,
+        body: Body(),
         floatingActionButton: SpeedDial(
           animatedIcon: AnimatedIcons.menu_close,
           animatedIconTheme: IconThemeData(size: 22.0),
@@ -28,13 +27,14 @@ class Myhomepage extends StatelessWidget {
           // child: Icon(Icons.add),
           visible: true,
           curve: Curves.bounceIn,
+          activeBackgroundColor: Colors.purple,
           overlayColor: Colors.black,
           overlayOpacity: 0.5,
-          onOpen: () => print('OPENING DIAL'),
-          onClose: () => print('DIAL CLOSED'),
           tooltip: 'Speed Dial',
           heroTag: 'speed-dial-hero-tag',
-          backgroundColor: Color.fromRGBO(0, 180, 180, 10),
+          backgroundColor: Get.isDarkMode
+              ? Color.fromRGBO(0, 180, 180, 10)
+              : HexColor("#00ca90"),
           foregroundColor: Colors.black,
           elevation: 8.0,
           shape: CircleBorder(),
@@ -43,6 +43,7 @@ class Myhomepage extends StatelessWidget {
               child: Icon(Icons.settings),
               backgroundColor: Colors.blue,
               label: 'Setting',
+              labelBackgroundColor: Colors.black.withOpacity(0.5),
               labelStyle: TextStyle(fontSize: 20),
               onTap: () => _modelSheetOfTask(context),
             ),
@@ -50,6 +51,7 @@ class Myhomepage extends StatelessWidget {
                 child: Icon(Icons.add),
                 backgroundColor: Colors.green,
                 label: 'Add task',
+                labelBackgroundColor: Colors.black.withOpacity(0.5),
                 labelStyle: TextStyle(fontSize: 20),
                 onTap: () {
                   Get.to(() => TaskForm(),

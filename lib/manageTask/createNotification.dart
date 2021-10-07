@@ -4,7 +4,9 @@ import 'dart:math';
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:task_manager2/controller/Controller.dart';
 import 'package:task_manager2/main.dart';
 import 'package:task_manager2/manageTask/taskForm.dart';
 import 'package:task_manager2/model/todo_Task.dart';
@@ -29,7 +31,6 @@ class CreateNotification {
       final taskrepeat = {"task": task.task, "key": "Day", "id": id};
       final list =
           json.decode(prefs!.get("listOfAlarmNotification").toString());
-      print(list);
       list.add(taskrepeat);
       prefs!.setString('listOfAlarmNotification', json.encode(list));
       prefs!.setString('repeatMapKey', json.encode(list));
@@ -45,7 +46,6 @@ class CreateNotification {
       TimeOfDay time = TaskForm.stringToTimeOfDay(task.repeat!['Week'][3]);
       DateTime delay = DateTime(startOnOfDate.year, startOnOfDate.month,
           startOnOfDate.day, time.hour, time.minute);
-      print(validay);
       final taskrepeat = {
         "task": task.task,
         "listOfNextNotificationDay": validay,
@@ -54,7 +54,6 @@ class CreateNotification {
       };
       final list =
           json.decode(prefs!.get("listOfAlarmNotificationOfWeek").toString());
-      print(list);
       list.add(taskrepeat);
       prefs!.setString('listOfAlarmNotificationOfWeek', json.encode(list));
       prefs!.setString('repeatMapKey', json.encode(list));
@@ -78,7 +77,6 @@ class CreateNotification {
       };
       final list =
           json.decode(prefs!.get("listOfAlarmNotificationOfMonth").toString());
-      print(list);
       list.add(taskrepeat);
       prefs!.setString('listOfAlarmNotificationOfMonth', json.encode(list));
       prefs!.setString('repeatMapKey', json.encode(list));
@@ -98,7 +96,6 @@ class CreateNotification {
       final taskrepeat = {"task": task.task, "key": "Year", "id": id};
       final list =
           json.decode(prefs!.get("listOfAlarmNotificationOfYears").toString());
-      print(list);
       list.add(taskrepeat);
       prefs!.setString('listOfAlarmNotificationOfYears', json.encode(list));
       prefs!.setString('repeatMapKey', json.encode(list));
@@ -123,9 +120,10 @@ class CreateNotification {
     }
   }
 
-  deleteNotification(int id) {
+  deleteNotification(int id , String taskName) {
     flutterLocalNotificationsPlugin.cancel(id);
     AndroidAlarmManager.cancel(id);
+    Get.find<Controller>().deleteForSharePreference(taskName);
   }
 
   static callbackDispatcher(int id) async {

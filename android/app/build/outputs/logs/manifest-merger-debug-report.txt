@@ -1,18 +1,20 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:1:1-58:12
-INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:1:1-58:12
-INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:1:1-58:12
-INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:1:1-58:12
-MERGED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:1:1-58:12
-MERGED from [:shared_preferences] /home/warren/AndroidStudioProjects/task_manager2/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
-MERGED from [:flutter_local_notifications] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-23:12
-MERGED from [:path_provider] /home/warren/AndroidStudioProjects/task_manager2/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
-MERGED from [:flutter_native_timezone] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_native_timezone/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
-MERGED from [:android_alarm_manager_plus] /home/warren/AndroidStudioProjects/task_manager2/build/android_alarm_manager_plus/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:1:1-79:12
+INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:1:1-79:12
+INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:1:1-79:12
+INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:1:1-79:12
+MERGED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:1:1-79:12
 MERGED from [:hexcolor] /home/warren/AndroidStudioProjects/task_manager2/build/hexcolor/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.media:media:1.1.0] /home/warren/.gradle/caches/transforms-2/files-2.1/1ff4bcb3167a74d75651e794e1872ecc/media-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [:shared_preferences] /home/warren/AndroidStudioProjects/task_manager2/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:share_plus] /home/warren/AndroidStudioProjects/task_manager2/build/share_plus/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-19:12
+MERGED from [:android_alarm_manager_plus] /home/warren/AndroidStudioProjects/task_manager2/build/android_alarm_manager_plus/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_native_timezone] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_native_timezone/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:flutter_local_notifications] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-23:12
+MERGED from [:url_launcher] /home/warren/AndroidStudioProjects/task_manager2/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-14:12
+MERGED from [:path_provider] /home/warren/AndroidStudioProjects/task_manager2/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.appcompat:appcompat:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/ddfeebee320e213e4569474cdfe875cf/appcompat-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media:media:1.1.0] /home/warren/.gradle/caches/transforms-2/files-2.1/1ff4bcb3167a74d75651e794e1872ecc/media-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment:1.1.0] /home/warren/.gradle/caches/transforms-2/files-2.1/2fd9120a6da4df3dbabdd40f6a2d8995/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/555cf706dacdc8d298d0dbe18bcfb468/vectordrawable-animated-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/b69d809a7d56669e263a6dd73fa3f3e0/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -27,8 +29,7 @@ MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/warren/.g
 MERGED from [androidx.customview:customview:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/bc28a09d8d2212ffd5788fe6c1853326/customview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/bb361c9951ec30a475ef40f80e89b874/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/57910a85af155c3103487e39ce23f678/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.core:core:1.3.0] /home/warren/.gradle/caches/transforms-2/files-2.1/a69d6fcd21e670073cd9cab171299398/core-1.3.0/AndroidManifest.xml:17:1-26:12
-MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] /home/warren/.gradle/caches/transforms-2/files-2.1/f2e73ae2c927c5e2323136b4ee464011/jetified-threetenabp-1.2.3/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.core:core:1.3.1] /home/warren/.gradle/caches/transforms-2/files-2.1/9d2ac2ae8a44d697ec01e22fb5b300b2/core-1.3.1/AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /home/warren/.gradle/caches/transforms-2/files-2.1/ca6b214160bd0909b103aa12202ef51c/lifecycle-runtime-2.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.savedstate:savedstate:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/2271d874344878e62b9a8e309af0c39d/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/fb333fb43575d8a3b51161295454427f/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
@@ -41,6 +42,7 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/w
 MERGED from [androidx.print:print:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/f15d67ff15ac844b69200ea1a0376a7a/print-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /home/warren/.gradle/caches/transforms-2/files-2.1/15792e6083b2b5b5a7ffa285d47daa24/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/b962778313a0e23f9ca3dbafc012c1af/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] /home/warren/.gradle/caches/transforms-2/files-2.1/f2e73ae2c927c5e2323136b4ee464011/jetified-threetenabp-1.2.3/AndroidManifest.xml:2:1-9:12
 INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/debug/AndroidManifest.xml:1:1-7:12
 INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/debug/AndroidManifest.xml:1:1-7:12
 INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/debug/AndroidManifest.xml:1:1-7:12
@@ -50,11 +52,11 @@ INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/d
 		INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/debug/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:1:1-58:12
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:1:1-79:12
 		INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/debug/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:1:1-58:12
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:1:1-79:12
 		INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/debug/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:1:11-69
@@ -68,110 +70,148 @@ uses-permission#android.permission.WAKE_LOCK
 ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:4:5-67
 	android:name
 		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:4:22-65
+queries
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:6:5-22:15
+intent#action:name:android.intent.action.VIEW+data:scheme:https
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:8:9-11:18
+action#android.intent.action.VIEW
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:9:13-65
+	android:name
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:9:21-62
+data
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:10:13-44
+	android:scheme
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:10:19-41
+intent#action:name:android.intent.action.DIAL+data:scheme:tel
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:13:9-16:18
+action#android.intent.action.DIAL
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:14:13-65
+	android:name
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:14:21-62
+intent#action:name:android.intent.action.SEND+data:mimeType:*/*
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:18:9-21:18
+action#android.intent.action.SEND
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:19:13-65
+	android:name
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:19:21-62
 application
-ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:6:5-57:19
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:24:5-78:19
+MERGED from [:share_plus] /home/warren/AndroidStudioProjects/task_manager2/build/share_plus/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-17:19
+MERGED from [:share_plus] /home/warren/AndroidStudioProjects/task_manager2/build/share_plus/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-17:19
 MERGED from [:flutter_local_notifications] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-21:19
 MERGED from [:flutter_local_notifications] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-21:19
-MERGED from [androidx.core:core:1.3.0] /home/warren/.gradle/caches/transforms-2/files-2.1/a69d6fcd21e670073cd9cab171299398/core-1.3.0/AndroidManifest.xml:24:5-89
-MERGED from [androidx.core:core:1.3.0] /home/warren/.gradle/caches/transforms-2/files-2.1/a69d6fcd21e670073cd9cab171299398/core-1.3.0/AndroidManifest.xml:24:5-89
-MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] /home/warren/.gradle/caches/transforms-2/files-2.1/f2e73ae2c927c5e2323136b4ee464011/jetified-threetenabp-1.2.3/AndroidManifest.xml:7:5-20
-MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] /home/warren/.gradle/caches/transforms-2/files-2.1/f2e73ae2c927c5e2323136b4ee464011/jetified-threetenabp-1.2.3/AndroidManifest.xml:7:5-20
+MERGED from [:url_launcher] /home/warren/AndroidStudioProjects/task_manager2/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher] /home/warren/AndroidStudioProjects/task_manager2/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-12:19
+MERGED from [androidx.core:core:1.3.1] /home/warren/.gradle/caches/transforms-2/files-2.1/9d2ac2ae8a44d697ec01e22fb5b300b2/core-1.3.1/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.3.1] /home/warren/.gradle/caches/transforms-2/files-2.1/9d2ac2ae8a44d697ec01e22fb5b300b2/core-1.3.1/AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/warren/.gradle/caches/transforms-2/files-2.1/96aee308bccd03bc62c306516c23a410/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/warren/.gradle/caches/transforms-2/files-2.1/96aee308bccd03bc62c306516c23a410/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] /home/warren/.gradle/caches/transforms-2/files-2.1/f2e73ae2c927c5e2323136b4ee464011/jetified-threetenabp-1.2.3/AndroidManifest.xml:7:5-20
+MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] /home/warren/.gradle/caches/transforms-2/files-2.1/f2e73ae2c927c5e2323136b4ee464011/jetified-threetenabp-1.2.3/AndroidManifest.xml:7:5-20
 	android:appComponentFactory
-		ADDED from [androidx.core:core:1.3.0] /home/warren/.gradle/caches/transforms-2/files-2.1/a69d6fcd21e670073cd9cab171299398/core-1.3.0/AndroidManifest.xml:24:18-86
+		ADDED from [androidx.core:core:1.3.1] /home/warren/.gradle/caches/transforms-2/files-2.1/9d2ac2ae8a44d697ec01e22fb5b300b2/core-1.3.1/AndroidManifest.xml:24:18-86
 	android:label
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:7:9-38
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:25:9-37
 	android:icon
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:8:9-43
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:27:9-40
+	android:name
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:26:9-38
 activity#com.example.task_manager2.MainActivity
-ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:9:9-37:20
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:28:9-58:20
+	android:turnScreenOn
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:33:13-40
+	android:showWhenLocked
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:32:13-42
 	android:launchMode
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:11:13-43
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:30:13-43
 	android:hardwareAccelerated
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:14:13-47
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:35:13-47
 	android:windowSoftInputMode
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:15:13-55
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:36:13-55
 	android:configChanges
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:13:13-163
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:34:13-163
 	android:theme
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:12:13-47
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:31:13-47
 	android:name
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:10:13-41
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:29:13-41
 meta-data#io.flutter.embedding.android.NormalTheme
-ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:20:13-23:17
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:41:13-44:17
 	android:resource
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:22:15-52
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:43:15-52
 	android:name
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:21:15-70
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:42:15-70
 meta-data#io.flutter.embedding.android.SplashScreenDrawable
-ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:29:13-32:17
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:50:13-53:17
 	android:resource
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:31:15-61
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:52:15-61
 	android:name
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:30:15-79
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:51:15-79
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:33:13-36:29
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:54:13-57:29
 action#android.intent.action.MAIN
-ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:34:17-68
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:55:17-68
 	android:name
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:34:25-66
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:55:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:35:17-76
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:56:17-76
 	android:name
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:35:27-74
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:56:27-74
 meta-data#flutterEmbedding
-ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:40:9-42:33
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:61:9-63:33
 	android:value
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:42:13-30
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:63:13-30
 	android:name
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:41:13-44
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:62:13-44
 service#dev.fluttercommunity.plus.androidalarmmanager.AlarmService
-ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:43:9-46:39
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:64:9-67:39
 	android:exported
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:46:13-37
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:67:13-37
 	android:permission
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:45:13-69
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:66:13-69
 	android:name
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:44:13-86
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:65:13-86
 receiver#dev.fluttercommunity.plus.androidalarmmanager.AlarmBroadcastReceiver
-ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:47:9-49:39
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:68:9-70:39
 	android:exported
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:49:13-37
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:70:13-37
 	android:name
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:48:13-96
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:69:13-96
 receiver#dev.fluttercommunity.plus.androidalarmmanager.RebootBroadcastReceiver
-ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:50:9-56:20
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:71:9-77:20
 	android:enabled
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:52:13-36
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:73:13-36
 	android:name
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:51:13-97
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:72:13-97
 intent-filter#action:name:android.intent.action.BOOT_COMPLETED
-ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:53:13-55:29
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:74:13-76:29
 action#android.intent.action.BOOT_COMPLETED
-ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:54:17-86
+ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:75:17-86
 	android:name
-		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:54:25-76
+		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml:75:25-76
 uses-sdk
 INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml
 INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/main/AndroidManifest.xml
-MERGED from [:shared_preferences] /home/warren/AndroidStudioProjects/task_manager2/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences] /home/warren/AndroidStudioProjects/task_manager2/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:flutter_local_notifications] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:flutter_local_notifications] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:path_provider] /home/warren/AndroidStudioProjects/task_manager2/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:path_provider] /home/warren/AndroidStudioProjects/task_manager2/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:flutter_native_timezone] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_native_timezone/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:flutter_native_timezone] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_native_timezone/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:android_alarm_manager_plus] /home/warren/AndroidStudioProjects/task_manager2/build/android_alarm_manager_plus/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:android_alarm_manager_plus] /home/warren/AndroidStudioProjects/task_manager2/build/android_alarm_manager_plus/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:hexcolor] /home/warren/AndroidStudioProjects/task_manager2/build/hexcolor/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:hexcolor] /home/warren/AndroidStudioProjects/task_manager2/build/hexcolor/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [androidx.media:media:1.1.0] /home/warren/.gradle/caches/transforms-2/files-2.1/1ff4bcb3167a74d75651e794e1872ecc/media-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.media:media:1.1.0] /home/warren/.gradle/caches/transforms-2/files-2.1/1ff4bcb3167a74d75651e794e1872ecc/media-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [:shared_preferences] /home/warren/AndroidStudioProjects/task_manager2/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] /home/warren/AndroidStudioProjects/task_manager2/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:share_plus] /home/warren/AndroidStudioProjects/task_manager2/build/share_plus/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:share_plus] /home/warren/AndroidStudioProjects/task_manager2/build/share_plus/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:android_alarm_manager_plus] /home/warren/AndroidStudioProjects/task_manager2/build/android_alarm_manager_plus/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:android_alarm_manager_plus] /home/warren/AndroidStudioProjects/task_manager2/build/android_alarm_manager_plus/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_native_timezone] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_native_timezone/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_native_timezone] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_native_timezone/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_local_notifications] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_local_notifications] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] /home/warren/AndroidStudioProjects/task_manager2/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] /home/warren/AndroidStudioProjects/task_manager2/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] /home/warren/AndroidStudioProjects/task_manager2/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] /home/warren/AndroidStudioProjects/task_manager2/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [androidx.appcompat:appcompat:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/ddfeebee320e213e4569474cdfe875cf/appcompat-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/ddfeebee320e213e4569474cdfe875cf/appcompat-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.1.0] /home/warren/.gradle/caches/transforms-2/files-2.1/1ff4bcb3167a74d75651e794e1872ecc/media-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.1.0] /home/warren/.gradle/caches/transforms-2/files-2.1/1ff4bcb3167a74d75651e794e1872ecc/media-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] /home/warren/.gradle/caches/transforms-2/files-2.1/2fd9120a6da4df3dbabdd40f6a2d8995/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] /home/warren/.gradle/caches/transforms-2/files-2.1/2fd9120a6da4df3dbabdd40f6a2d8995/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/555cf706dacdc8d298d0dbe18bcfb468/vectordrawable-animated-1.0.0/AndroidManifest.xml:20:5-44
@@ -200,10 +240,8 @@ MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/warren/
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/bb361c9951ec30a475ef40f80e89b874/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/57910a85af155c3103487e39ce23f678/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/57910a85af155c3103487e39ce23f678/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core:1.3.0] /home/warren/.gradle/caches/transforms-2/files-2.1/a69d6fcd21e670073cd9cab171299398/core-1.3.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.core:core:1.3.0] /home/warren/.gradle/caches/transforms-2/files-2.1/a69d6fcd21e670073cd9cab171299398/core-1.3.0/AndroidManifest.xml:20:5-22:41
-MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] /home/warren/.gradle/caches/transforms-2/files-2.1/f2e73ae2c927c5e2323136b4ee464011/jetified-threetenabp-1.2.3/AndroidManifest.xml:5:5-44
-MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] /home/warren/.gradle/caches/transforms-2/files-2.1/f2e73ae2c927c5e2323136b4ee464011/jetified-threetenabp-1.2.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core:1.3.1] /home/warren/.gradle/caches/transforms-2/files-2.1/9d2ac2ae8a44d697ec01e22fb5b300b2/core-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.1] /home/warren/.gradle/caches/transforms-2/files-2.1/9d2ac2ae8a44d697ec01e22fb5b300b2/core-1.3.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /home/warren/.gradle/caches/transforms-2/files-2.1/ca6b214160bd0909b103aa12202ef51c/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /home/warren/.gradle/caches/transforms-2/files-2.1/ca6b214160bd0909b103aa12202ef51c/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.savedstate:savedstate:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/2271d874344878e62b9a8e309af0c39d/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
@@ -228,6 +266,8 @@ MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /home/warren/.gradle/
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /home/warren/.gradle/caches/transforms-2/files-2.1/15792e6083b2b5b5a7ffa285d47daa24/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/b962778313a0e23f9ca3dbafc012c1af/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/warren/.gradle/caches/transforms-2/files-2.1/b962778313a0e23f9ca3dbafc012c1af/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] /home/warren/.gradle/caches/transforms-2/files-2.1/f2e73ae2c927c5e2323136b4ee464011/jetified-threetenabp-1.2.3/AndroidManifest.xml:5:5-44
+MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] /home/warren/.gradle/caches/transforms-2/files-2.1/f2e73ae2c927c5e2323136b4ee464011/jetified-threetenabp-1.2.3/AndroidManifest.xml:5:5-44
 INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/debug/AndroidManifest.xml
 INJECTED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/debug/AndroidManifest.xml
 	android:targetSdkVersion
@@ -240,6 +280,22 @@ uses-permission#android.permission.INTERNET
 ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/debug/AndroidManifest.xml:6:5-66
 	android:name
 		ADDED from /home/warren/AndroidStudioProjects/task_manager2/android/app/src/debug/AndroidManifest.xml:6:22-64
+provider#dev.fluttercommunity.plus.share.ShareFileProvider
+ADDED from [:share_plus] /home/warren/AndroidStudioProjects/task_manager2/build/share_plus/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-16:20
+	android:grantUriPermissions
+		ADDED from [:share_plus] /home/warren/AndroidStudioProjects/task_manager2/build/share_plus/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-47
+	android:authorities
+		ADDED from [:share_plus] /home/warren/AndroidStudioProjects/task_manager2/build/share_plus/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-74
+	android:exported
+		ADDED from [:share_plus] /home/warren/AndroidStudioProjects/task_manager2/build/share_plus/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [:share_plus] /home/warren/AndroidStudioProjects/task_manager2/build/share_plus/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-77
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:share_plus] /home/warren/AndroidStudioProjects/task_manager2/build/share_plus/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-15:68
+	android:resource
+		ADDED from [:share_plus] /home/warren/AndroidStudioProjects/task_manager2/build/share_plus/intermediates/library_manifest/debug/AndroidManifest.xml:15:17-65
+	android:name
+		ADDED from [:share_plus] /home/warren/AndroidStudioProjects/task_manager2/build/share_plus/intermediates/library_manifest/debug/AndroidManifest.xml:14:17-67
 uses-permission#android.permission.VIBRATE
 ADDED from [:flutter_local_notifications] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-66
 	android:name
@@ -270,3 +326,11 @@ action#com.htc.intent.action.QUICKBOOT_POWERON
 ADDED from [:flutter_local_notifications] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-82
 	android:name
 		ADDED from [:flutter_local_notifications] /home/warren/AndroidStudioProjects/task_manager2/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:18:25-79
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher] /home/warren/AndroidStudioProjects/task_manager2/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:74
+	android:exported
+		ADDED from [:url_launcher] /home/warren/AndroidStudioProjects/task_manager2/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-37
+	android:theme
+		ADDED from [:url_launcher] /home/warren/AndroidStudioProjects/task_manager2/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-71
+	android:name
+		ADDED from [:url_launcher] /home/warren/AndroidStudioProjects/task_manager2/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-74

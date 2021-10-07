@@ -11,6 +11,7 @@ import 'package:timezone/timezone.dart' as tz;
 
 import '../controller/Controller.dart';
 import '../main.dart';
+import 'taskForm.dart';
 
 class NotificationService {
   static const String groupKey = 'com.android.example.task_manager2';
@@ -99,12 +100,10 @@ class NotificationService {
       prefs.setString("listOfTaskForTest", json.encode(list));
     }
     for (var i = 0; i < listOfNextNotificationDay.length; i++) {
-      print(
-          " next date of time ${_nextInstanceOfWeekTime(listOfNextNotificationDay[i], time!)}");
       await flutterLocalNotificationsPlugin.zonedSchedule(
           id!,
           task,
-          "${DateFormat("EE, d MMM yyyy").format(date!)} \n ${formatTimeOfDay(time)}",
+          "${DateFormat("EE, d MMM yyyy").format(date!)} \n ${formatTimeOfDay(time!)}",
           _nextInstanceOfWeekTime(listOfNextNotificationDay[i], time),
           firstNotificationPlatformSpecifics,
           uiLocalNotificationDateInterpretation:
@@ -148,7 +147,7 @@ class NotificationService {
                 .day;
         i++) {
       if (DateTime(scheduledDate.year, scheduledDate.month, i).weekday ==
-          week(validWeekOfMonth)) {
+          TaskForm.week(validWeekOfMonth)) {
         listday.add(tz.TZDateTime(
             tz.local, scheduledDate.year, scheduledDate.month, i));
       }
@@ -197,7 +196,7 @@ class NotificationService {
 
   tz.TZDateTime _nextInstanceOfWeekTime(String weekday, TimeOfDay time) {
     tz.TZDateTime scheduledDate = _nextInstanceOfTenAM(time);
-    while (scheduledDate.weekday != week(weekday)) {
+    while (scheduledDate.weekday != TaskForm.week(weekday)) {
       scheduledDate = scheduledDate.add(const Duration(days: 1));
     }
     return scheduledDate;
@@ -208,33 +207,6 @@ class NotificationService {
   }
 
   //return the int of any week day
-  int week(String day) {
-    int i = 0;
-    switch (day) {
-      case "monday":
-        i = 1;
-        break;
-      case "tuesday":
-        i = 2;
-        break;
-      case "wednesday":
-        i = 3;
-        break;
-      case "thursday":
-        i = 4;
-        break;
-      case "friday":
-        i = 5;
-        break;
-      case "saturday":
-        i = 6;
-        break;
-      case "sunday":
-        i = 7;
-        break;
-    }
-    return i;
-  }
 
   formatTimeOfDay(TimeOfDay createTime) {
     final now = new DateTime.now();

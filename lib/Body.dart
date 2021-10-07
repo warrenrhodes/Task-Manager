@@ -1,29 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:provider/provider.dart';
-import 'package:task_manager2/manageTask/createNotification.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:task_manager2/model/modelTitle.dart';
-import 'package:task_manager2/provider/dartThemePorvider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'controller/Controller.dart';
-import 'main.dart';
 import 'managePageUplist/generatePage.dart';
 import 'manageTask/generateTitleTaskPage.dart';
 import 'manageTask/todoListwidget.dart';
 import 'model/todo_Task.dart';
 
 class Body extends StatelessWidget {
-  final Size? size;
-
-  Body({
-    Key? key,
-    this.size,
-  }) : super(key: key);
-
   List menuitems = [
     "Task list",
     "Task Completed",
@@ -31,32 +21,38 @@ class Body extends StatelessWidget {
     "Send suggestion",
     "Setting"
   ];
-  Controller controller = Get.find();
+  Controller controller = Get.find<Controller>();
 
-  // void _lauch() {
-  //   _artboard.addController(_controller = SimpleAnimation("clip"));
-  // }
   @override
   Widget build(BuildContext context) {
-    // _artboard = controller.artboard;
-    GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
-    final themeProvider = Provider.of<DarkThemeProvider>(context);
+    String? encodeQueryParameters(Map<String, String> params) {
+      return params.entries
+          .map((e) =>
+              '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+          .join('&');
+    }
+
+    final Uri emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: "webanalyse237@gmail.com",
+      query: encodeQueryParameters(<String, String>{
+        'subject': "Suggestion",
+      }),
+    );
+
     final listTitle = controller.listTitle;
     return Container(
-      height: size?.height,
-      color: Colors.transparent,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           ///header
-          SafeArea(
-              child: Container(
+          Container(
             height: 50,
             decoration: BoxDecoration(
-              color: themeProvider.darkTheme
-                  ? Color.fromRGBO(0, 65, 65, 10)
-                  : Colors.blue,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: context.theme.appBarTheme.backgroundColor,
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(12),
+                  bottomRight: Radius.circular(12)),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,7 +61,10 @@ class Body extends StatelessWidget {
                 SizedBox(
                   width: 80,
                   child: ImageIcon(AssetImage("assets/logo.png"),
-                      size: 50, color: Color.fromRGBO(0, 183, 183, 10)),
+                      size: 50,
+                      color: Get.isDarkMode
+                          ? Color.fromRGBO(0, 183, 183, 10)
+                          : HexColor("#00005a")),
                 ),
                 Container(
                   child: Row(
@@ -74,7 +73,9 @@ class Body extends StatelessWidget {
                         initialValue: "Task list",
                         icon: Icon(
                           Icons.segment,
-                          color: Colors.white70,
+                          color: Get.isDarkMode
+                              ? Colors.white70
+                              : HexColor("#00005a"),
                         ),
                         itemBuilder: (BuildContext context) {
                           return menuitems.map((test) {
@@ -106,11 +107,9 @@ class Body extends StatelessWidget {
                             );
                           }).toList();
                         },
-                        color: themeProvider.darkTheme
-                            ? Color.fromRGBO(0, 25, 25, 10)
-                            : Colors.white,
+                        color:
+                            context.theme.popupMenuTheme.color!.withOpacity(1),
                         onSelected: (value) {
-                          print(value);
                           if (value == "Task Completed" &&
                               controller.listTask
                                       .where(
@@ -118,6 +117,10 @@ class Body extends StatelessWidget {
                                       .toList()
                                       .length ==
                                   0) {
+                          } else if (value == "Share") {
+                            Share.share("Please visite https://google.com");
+                          } else if (value == "Send suggestion") {
+                            launch(emailLaunchUri.toString());
                           } else {
                             Get.to(
                               () => GeneratePage(
@@ -132,25 +135,26 @@ class Body extends StatelessWidget {
                 )
               ],
             ),
-          )),
+          ),
 
           /// contruction of container title
           Container(
             padding: EdgeInsets.only(left: 5, right: 5, bottom: 10, top: 20),
             width: double.infinity,
             child: Text("Categories :",
-                style: TextStyle(color: Colors.white70, fontSize: 18)),
+                style: TextStyle(
+                    color: context.theme.primaryTextTheme.bodyText1!.color,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18)),
           ),
           GetBuilder<Controller>(
               init: Controller(),
               builder: (controller) {
-                final listTask = controller.listTask;
                 return Container(
-                    width: Get.size.width,
                     padding: EdgeInsets.only(
                       left: 15,
                     ),
-                    height: controller.heightOfContainer,
+                    height: 130,
                     // Use ListView.builder
                     child: ListView.builder(
                         itemCount: listTitle.length,
@@ -175,8 +179,7 @@ class Body extends StatelessWidget {
                                         transition: Transition.rightToLeft,
                                         duration: Duration(milliseconds: 600)),
                                 child: listTitle[index].title == "Default"
-                                    ? buildContainer(
-                                        themeProvider, listTitle[index])
+                                    ? buildContainer(listTitle[index])
                                     : Dismissible(
                                         key: Key(
                                             'item ${listTitle[index].title}'),
@@ -186,7 +189,7 @@ class Body extends StatelessWidget {
                                           return await Get.defaultDialog(
                                               title: 'Delete Confirmation',
                                               content: Text(
-                                                  "Are you sure you want to delete this ${listTitle[index].title}? \n all potentiel tasks associated with this title will be delete"),
+                                                  "Are you sure you want to delete  ${listTitle[index].title}? \nall potentiel tasks associated at ${listTitle[index].title} will be delete"),
                                               textCancel: "Cancel",
                                               textConfirm: "Delete",
                                               barrierDismissible: false,
@@ -217,17 +220,11 @@ class Body extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        child: buildContainer(
-                                            themeProvider, listTitle[index]))),
+                                        child:
+                                            buildContainer(listTitle[index]))),
                           );
                         }));
               }),
-          TextButton(
-            child: Text('Get active notifications'),
-            onPressed: () async {
-              await _getActiveNotifications(context);
-            },
-          ),
 
           ///....................... container to add edit and delete task...............
           GetBuilder<Controller>(builder: (_) {
@@ -237,29 +234,37 @@ class Body extends StatelessWidget {
                 width: double.infinity,
                 child: controller.taskchange["all task"] == true
                     ? Text("ALL'S TASKS :",
-                        style: TextStyle(color: Colors.white70, fontSize: 10))
-                    : controller.taskchange["completed task"] == true &&
-                            controller.taskchange["today task"] == true
+                        style: TextStyle(
+                            color:
+                                context.theme.primaryTextTheme.bodyText1!.color,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18))
+                    : controller.taskchange["today task"] == true &&
+                            controller.taskchange["completed task"] == true
                         ? Text("COMPLETED'S TASKS and TODAY' TASKS:",
-                            style:
-                                TextStyle(color: Colors.white70, fontSize: 10))
+                            style: TextStyle(
+                                color: context
+                                    .theme.primaryTextTheme.bodyText1!.color,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18))
                         : controller.taskchange["completed task"] == true
                             ? Text("COMPLETED'S TASKS :",
                                 style: TextStyle(
-                                    color: Colors.white70, fontSize: 10))
-                            : controller.taskchange["today task"] == true
-                                ? Text("TODAY'S TASKS :",
-                                    style: TextStyle(
-                                        color: Colors.white70, fontSize: 10))
-                                : Text(" TASKS :",
-                                    style: TextStyle(
-                                        color: Colors.white70, fontSize: 10)));
+                                    color: context.theme.primaryTextTheme
+                                        .bodyText1!.color,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18))
+                            : Text("TODAY'S TASKS :",
+                                style: TextStyle(
+                                    color: context.theme.primaryTextTheme
+                                        .bodyText1!.color,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18)));
           }),
           GetBuilder<Controller>(
               init: Controller(),
               builder: (initController) {
                 final listTask = initController.listTask;
-                print("${listTask.length}");
                 if (listTask == null || listTask.isEmpty) {
                   return Expanded(
                     child: Container(
@@ -267,11 +272,11 @@ class Body extends StatelessWidget {
                           left: 15,
                         ),
                         decoration: BoxDecoration(
-                            image: themeProvider.darkTheme
+                            image: Get.isDarkMode
                                 ? DecorationImage(
-                                    fit: BoxFit.contain,
+                                    // fit: BoxFit.contain,
                                     colorFilter: new ColorFilter.mode(
-                                        Colors.white.withOpacity(0.2),
+                                        Colors.red.withOpacity(0.2),
                                         BlendMode.dstIn),
                                     image: AssetImage(
                                       "assets/1.png",
@@ -279,7 +284,7 @@ class Body extends StatelessWidget {
                                 : DecorationImage(
                                     fit: BoxFit.contain,
                                     colorFilter: new ColorFilter.mode(
-                                        Colors.black.withOpacity(0.5),
+                                        Colors.white.withOpacity(0.4),
                                         BlendMode.dstATop),
                                     image: AssetImage(
                                       "assets/1.png",
@@ -293,7 +298,14 @@ class Body extends StatelessWidget {
                             SizedBox(
                               height: 40,
                             ),
-                            Text("Data not found ")
+                            Text(
+                              "Data not found ",
+                              style: TextStyle(
+                                  color: context
+                                      .theme.primaryTextTheme.bodyText1!.color,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            )
                           ],
                         ))),
                   );
@@ -312,32 +324,38 @@ class Body extends StatelessWidget {
                             .length ==
                         0) {
                   return Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          image: themeProvider.darkTheme
-                              ? DecorationImage(
-                                  fit: BoxFit.contain,
-                                  colorFilter: new ColorFilter.mode(
-                                      Colors.white.withOpacity(0.2),
-                                      BlendMode.dstIn),
-                                  image: AssetImage(
-                                    "assets/4.png",
-                                  ))
-                              : DecorationImage(
-                                  fit: BoxFit.contain,
-                                  colorFilter: new ColorFilter.mode(
-                                      Colors.black.withOpacity(0.5),
-                                      BlendMode.dstATop),
-                                  image: AssetImage(
-                                    "assets/4.png",
-                                  ))),
-                      child: Center(
-                        child: Text(
+                    child: Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              image: Get.isDarkMode
+                                  ? DecorationImage(
+                                      fit: BoxFit.contain,
+                                      colorFilter: new ColorFilter.mode(
+                                          Colors.white.withOpacity(0.2),
+                                          BlendMode.dstIn),
+                                      image: AssetImage(
+                                        "assets/4.png",
+                                      ))
+                                  : DecorationImage(
+                                      fit: BoxFit.contain,
+                                      colorFilter: new ColorFilter.mode(
+                                          Colors.white.withOpacity(0.7),
+                                          BlendMode.dstATop),
+                                      image: AssetImage(
+                                        "assets/4.png",
+                                      ))),
+                          height: Get.size.height / 2,
+                        ),
+                        Text(
                             "Congratulation \nAll today's tasks, have been accomplished ",
                             textAlign: TextAlign.center,
-                            style:
-                                TextStyle(fontSize: 30, color: Colors.white38)),
-                      ),
+                            style: TextStyle(
+                                color: context
+                                    .theme.primaryTextTheme.bodyText1!.color,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 25)),
+                      ],
                     ),
                   );
                 }
@@ -349,7 +367,9 @@ class Body extends StatelessWidget {
                       child: controller.taskchange["all task"] == true
                           ? TodoListWidget(
                               // listKey: listKey,
-                              taskList: listTask,
+                              taskList: listTask
+                                  .where((element) => element.status == false)
+                                  .toList(),
                               page: "body",
                             )
                           : controller.taskchange["completed task"] == true &&
@@ -400,15 +420,14 @@ class Body extends StatelessWidget {
   }
 
   ///build title of task
-  buildContainer(DarkThemeProvider themeProvider, TodoTitle _listtitle) {
+  buildContainer(TodoTitle _listtitle) {
+    BuildContext context = Get.context!;
     return Container(
       padding: EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
       margin: EdgeInsets.only(right: 12),
-      //width: 100,
+      width: 80,
       decoration: BoxDecoration(
-        color: themeProvider.darkTheme
-            ? Color.fromRGBO(0, 65, 65, 10)
-            : Colors.blue,
+        color: context.theme.appBarTheme.backgroundColor,
         borderRadius: BorderRadius.all(Radius.circular(15)),
       ),
       child: Column(
@@ -416,10 +435,11 @@ class Body extends StatelessWidget {
         children: [
           Center(
             child: Container(
+                margin: EdgeInsets.only(bottom: 5),
                 child: Text("${_listtitle.title}",
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        color: Colors.white,
+                        color: context.theme.primaryTextTheme.bodyText1!.color,
                         fontWeight: FontWeight.bold,
                         fontSize: 15))),
           ),
@@ -434,11 +454,14 @@ class Body extends StatelessWidget {
                   lineWidth: 7.0,
                   center: Text(
                     "  No \n Task",
-                    style: TextStyle(fontSize: 7),
+                    style: TextStyle(
+                      fontSize: 7,
+                      fontWeight: FontWeight.bold,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                   circularStrokeCap: CircularStrokeCap.butt,
-                  backgroundColor: Colors.grey,
+                  backgroundColor: Get.isDarkMode ? Colors.grey : Colors.white,
                   progressColor: Color(_listtitle.color!),
                 );
               }
@@ -458,10 +481,13 @@ class Body extends StatelessWidget {
                     : 0,
                 center: Text(
                     "${taskCom} of "
-                    "${allTaskOfSpecificTitle} \nTask",
-                    style: TextStyle(fontSize: 10)),
+                    "${allTaskOfSpecificTitle} \nTask(s)",
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                    )),
                 circularStrokeCap: CircularStrokeCap.butt,
-                backgroundColor: Colors.grey,
+                backgroundColor: Get.isDarkMode ? Colors.grey : Colors.white,
                 progressColor: Color(_listtitle.color!),
               );
             }),
@@ -469,71 +495,5 @@ class Body extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Future<void> _getActiveNotifications(BuildContext context) async {
-    final Widget activeNotificationsDialogContent =
-        await _getActiveNotificationsDialogContent();
-    await showDialog<void>(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-        content: activeNotificationsDialogContent,
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: const Text('OK'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Future<Widget> _getActiveNotificationsDialogContent() async {
-    try {
-      final List<ActiveNotification>? activeNotifications =
-          await flutterLocalNotificationsPlugin
-              .resolvePlatformSpecificImplementation<
-                  AndroidFlutterLocalNotificationsPlugin>()!
-              .getActiveNotifications();
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          const Text(
-            'Active Notifications',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          Text(
-            '${CreateNotification().getListOfPendingNotificationRequest()}',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          const Divider(color: Colors.black),
-          if (activeNotifications!.isEmpty)
-            const Text('No active notifications'),
-          if (activeNotifications.isNotEmpty)
-            for (ActiveNotification activeNotification in activeNotifications)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'id: ${activeNotification.id}\n'
-                    'channelId: ${activeNotification.channelId}\n'
-                    'title: ${activeNotification.title}\n'
-                    'body: ${activeNotification.body}',
-                  ),
-                  const Divider(color: Colors.black),
-                ],
-              ),
-        ],
-      );
-    } on PlatformException catch (error) {
-      return Text(
-        'Error calling "getActiveNotifications"\n'
-        'code: ${error.code}\n'
-        'message: ${error.message}',
-      );
-    }
   }
 }

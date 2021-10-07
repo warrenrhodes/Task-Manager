@@ -2,11 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:task_manager2/controller/Controller.dart';
 import 'package:task_manager2/manageTask/todoListwidget.dart';
 import 'package:task_manager2/model/modelTitle.dart';
-import 'package:task_manager2/myhomepage.dart';
 
 class TitleTaskPage extends StatelessWidget {
   TodoTitle? title;
@@ -19,6 +17,7 @@ class TitleTaskPage extends StatelessWidget {
   Widget build(BuildContext context) {
     String titreSelectionner = title!.title;
     return Scaffold(
+        backgroundColor: context.theme.backgroundColor,
         appBar: AppBar(
           title: Text(titreSelectionner),
           actions: [
@@ -32,19 +31,20 @@ class TitleTaskPage extends StatelessWidget {
                   iconSize: 35,
                   color: Colors.white70,
                   onPressed: () {
-                    Alert(
-                        type: AlertType.warning,
-                        context: context,
-                        title: "Are you sure?",
-                        style: buildalertStyle(),
+                    Get.defaultDialog(
+                        title: 'Delete Confirmation',
                         content: Text(
-                          "All the task of $title  will be delete",
+                          "All the task of ${title!.title}  will be delete",
                           style: TextStyle(fontSize: 15),
                         ),
-                        buttons: [
-                          builCancelButton(context),
-                          builddeletebutton()
-                        ]).show();
+                        textCancel: "Cancel",
+                        textConfirm: "Delete",
+                        barrierDismissible: false,
+                        onCancel: () {},
+                        onConfirm: () async {
+                          controller.deleteTitle(title!);
+                          Get.back();
+                        });
                   })
           ],
         ),
@@ -68,55 +68,5 @@ class TitleTaskPage extends StatelessWidget {
                   child: TodoListWidget(taskList: taskOfpage, page: ""),
                 );
         }));
-  }
-
-  builCancelButton(context) => DialogButton(
-        child: Text(
-          "Cancel",
-          style: TextStyle(color: Colors.white, fontSize: 20),
-        ),
-        onPressed: () => Get.off(Myhomepage(),
-            fullscreenDialog: true,
-            transition: Transition.rightToLeft,
-            duration: Duration(milliseconds: 600)),
-        color: Color.fromRGBO(0, 179, 134, 1.0),
-      );
-
-  builddeletebutton() => DialogButton(
-        child: Text(
-          "Delete",
-          style: TextStyle(color: Colors.white, fontSize: 20),
-        ),
-        onPressed: () async {
-          controller.deleteTitle(title!);
-          Get.off(() => Myhomepage(),
-              transition: Transition.rightToLeft,
-              duration: Duration(milliseconds: 600));
-        },
-        gradient: LinearGradient(colors: [
-          Color.fromRGBO(116, 116, 191, 1.0),
-          Color.fromRGBO(52, 138, 199, 1.0)
-        ]),
-      );
-
-  AlertStyle buildalertStyle() {
-    return AlertStyle(
-      animationType: AnimationType.grow,
-      isCloseButton: false,
-      isOverlayTapDismiss: false,
-      descStyle: TextStyle(fontWeight: FontWeight.bold),
-      descTextAlign: TextAlign.start,
-      animationDuration: Duration(milliseconds: 600),
-      alertBorder: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(0.0),
-        side: BorderSide(
-          color: Colors.grey,
-        ),
-      ),
-      titleStyle: TextStyle(
-        color: Colors.red,
-      ),
-      alertAlignment: Alignment.center,
-    );
   }
 }

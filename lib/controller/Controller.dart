@@ -11,19 +11,17 @@ import 'package:task_manager2/manageTask/createNotification.dart';
 import 'package:task_manager2/manageTask/taskForm.dart';
 import 'package:task_manager2/model/modelTitle.dart';
 import 'package:task_manager2/model/todo_Task.dart';
+import 'package:task_manager2/theme/themeService.dart';
 
 class Controller extends GetxController {
   List<TodoTitle> _title = [];
   List<TodoTask> _task = [];
   Box<TodoTitle> titleBox = Hive.box<TodoTitle>("title");
   Box<TodoTask> taskBox = Hive.box<TodoTask>("task");
-  GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
 
   List<TodoTitle> get listTitle => _title;
 
   List<TodoTask> get listTask => _task;
-
-  GlobalKey<AnimatedListState> get listKey => _listKey;
 
   Controller() {
     _task = [];
@@ -36,31 +34,15 @@ class Controller extends GetxController {
     "completed task": false
   };
 
-  ValueNotifier<double> topContainer = ValueNotifier(0);
-  double _heightOfContainer = 130;
-
-  double get heightOfContainer => _heightOfContainer;
   int _alertDateAndTime = 0;
+
+  int? _selectedTheme;
+  int get selectedTheme => _selectedTheme!;
 
   int get alert => _alertDateAndTime;
 
-  setHeightOfContainer(double offset, double maxposition) {
-    if (offset == maxposition) {
-      _heightOfContainer = 0;
-    } else if (_heightOfContainer > 0) {
-      double i = maxposition / offset;
-      _heightOfContainer = _heightOfContainer - _heightOfContainer / i;
-      if (_heightOfContainer < 0) _heightOfContainer = 0;
-    }
-    update();
-  }
-
-  addHeightOfContainer(double offset, double maxposition) {
-    if (offset == 0) {
-      _heightOfContainer = 130;
-    } else if (_heightOfContainer < 130) {
-      _heightOfContainer = _heightOfContainer + 1;
-    }
+  setSelectedTheme(int value) {
+    _selectedTheme = value;
     update();
   }
 
@@ -73,6 +55,13 @@ class Controller extends GetxController {
   Future<void> onInit() async {
     // TODO: implement onInit
     super.onInit();
+    prefs = await SharedPreferences.getInstance();
+    prefs!.setString("listOfAlarmNotification", json.encode([]));
+    prefs!.setString("listOfAlarmNotificationOfWeek", json.encode([]));
+    prefs!.setString("listOfAlarmNotificationOfMonth", json.encode([]));
+    prefs!.setString("listOfAlarmNotificationOfYears", json.encode([]));
+    prefs!.setString("listOfTaskForTest", json.encode([]));
+    _selectedTheme = ThemeService().getdefaultTheme() == false ? 0 : 1;
     await titleBox.clear();
     await taskBox.clear();
     titleBox.add(TodoTitle(title: "Default", id: 1, color: Colors.green.value));
@@ -158,7 +147,7 @@ class Controller extends GetxController {
   }
 
   deleteTask(TodoTask task) {
-    CreateNotification().deleteNotification(task.id!);
+    CreateNotification().deleteNotification(task.id!, task.task);
     int index = _task.indexOf(task);
     taskBox.delete(index);
     _task.removeWhere((element) => element.id == task.id);
@@ -169,14 +158,16 @@ class Controller extends GetxController {
       {TodoTask? oldtasks,
       String task = "",
       int? color,
+      String? description = "",
       DateTime? date,
       String? time,
       String? title,
       Map? repeat}) {
-    CreateNotification().deleteNotification(oldtasks!.id!);
+    CreateNotification().deleteNotification(oldtasks!.id!, oldtasks.task);
     int index = _task.indexOf(oldtasks);
     _task[index].task = task;
     _task[index].taskTitle = title;
+    _task[index].description = description;
     _task[index].time = time;
     _task[index].date = date;
     _task[index].color = color;
@@ -195,7 +186,6 @@ class Controller extends GetxController {
     _task[index].status = !_task[index].status;
     //_task[index].save();
     taskBox.putAt(index, _task[index]);
-    print("status has be change");
     update();
   }
 
@@ -209,5 +199,14 @@ class Controller extends GetxController {
         now.year, now.month, now.day, createTime.hour, createTime.minute);
     final format = DateFormat.jm(); //"6:00 AM"
     return format.format(dt);
+  }
+
+  deleteForSharePreference(String task) async {
+    final prefs = await SharedPreferences.getInstance();
+    final List list = json.decode(prefs.getString("listOfTaskForTest")!);
+    if (!list.contains(task)) {
+      list.remove(task);
+      prefs.setString("listOfTaskForTest", json.encode(list));
+    }
   }
 }

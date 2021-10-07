@@ -21,6 +21,7 @@ class TodoTaskAdapter extends TypeAdapter<TodoTask> {
       id: fields[2] as int?,
       status: fields[1] as bool,
       color: fields[6] as int?,
+      description: fields[8] as String?,
       date: fields[4] as DateTime?,
       time: fields[3] as String?,
       taskTitle: fields[5] as String?,
@@ -31,7 +32,7 @@ class TodoTaskAdapter extends TypeAdapter<TodoTask> {
   @override
   void write(BinaryWriter writer, TodoTask obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.task)
       ..writeByte(1)
@@ -47,7 +48,9 @@ class TodoTaskAdapter extends TypeAdapter<TodoTask> {
       ..writeByte(6)
       ..write(obj.color)
       ..writeByte(7)
-      ..write(obj.repeat);
+      ..write(obj.repeat)
+      ..writeByte(8)
+      ..write(obj.description);
   }
 
   @override
