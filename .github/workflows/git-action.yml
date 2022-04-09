@@ -13,13 +13,14 @@ jobs:
       runs-on: ubuntu-latest
 
       steps:
-        - name: Sent Notification
-          uses: warrenrhodes/Task-Manager@master
-          if: always()
-          with:
-            chat: ${{ secrets.chat }}
-            token: ${{ secrets.token }}
-            status: ${{ job.status }}
+        - name: send custom message
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          The ${{ github.event_name }} event triggered final step.
+          echo This event is a pull request that had an assignee removed.
   dart-format:
     # This job will run on ubuntu virtual machine
     runs-on: ubuntu-latest
