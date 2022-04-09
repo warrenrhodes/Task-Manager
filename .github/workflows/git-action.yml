@@ -18,9 +18,6 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: |
-          The ${{ github.event_name }} event triggered final step.
-          echo This event is a pull request that had an assignee removed.
   dart-format:
     # This job will run on ubuntu virtual machine
     runs-on: ubuntu-latest
@@ -37,11 +34,6 @@ jobs:
     # Get flutter dependencies.
     - run: flutter pub get
     
-    # Check for any formatting issues in the code.
-    - run: flutter format --set-exit-if-changed .
-    
     # Statically analyze the Dart code for any errors.
-    - run: flutter analyze .
+    - run: flutter analyze
     
-    # Run widget tests for our flutter project.
-    - run: flutter test
