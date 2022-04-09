@@ -14,10 +14,10 @@ jobs:
 
       steps:
         - name: send custom message
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.TELEGRAM_TO }}
-        token: ${{ secrets.TELEGRAM_TOKEN }}
+          uses: appleboy/telegram-action@master
+          with:
+            to: ${{ secrets.TELEGRAM_TO }}
+            token: ${{ secrets.TELEGRAM_TOKEN }}
   dart-format:
     # This job will run on ubuntu virtual machine
     runs-on: ubuntu-latest
