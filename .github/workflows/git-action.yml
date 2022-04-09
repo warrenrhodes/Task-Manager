@@ -13,13 +13,11 @@ jobs:
       runs-on: ubuntu-latest
 
       steps:
-        - name: Sent Notification
-          uses: warrenrhodes/Task-Manager@master
-          if: always()
+        - name: send custom message
+          uses: appleboy/telegram-action@master
           with:
-            chat: ${{ secrets.chat }}
-            token: ${{ secrets.token }}
-            status: ${{ job.status }}
+            to: ${{ secrets.TELEGRAM_TO }}
+            token: ${{ secrets.TELEGRAM_TOKEN }}
   dart-format:
     # This job will run on ubuntu virtual machine
     runs-on: ubuntu-latest
@@ -36,11 +34,6 @@ jobs:
     # Get flutter dependencies.
     - run: flutter pub get
     
-    # Check for any formatting issues in the code.
-    - run: flutter format --set-exit-if-changed .
-    
     # Statically analyze the Dart code for any errors.
-    - run: flutter analyze .
+    - run: flutter analyze
     
-    # Run widget tests for our flutter project.
-    - run: flutter test
